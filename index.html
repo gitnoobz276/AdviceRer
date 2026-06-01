@@ -249,10 +249,18 @@ document.getElementById("googleBtn").addEventListener("click", async () => {
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);
 
+alert("Login successful!");
+
+const homepage = document.getElementById("homepage");
+
+if(homepage){
+    alert("Homepage found!");
+    homepage.style.display = "block";
+}else{
+    alert("Homepage NOT found!");
+}
+
 document.getElementById("login-screen").style.display = "none";
-
-document.getElementById("homepage").style.display = "block";
-
 document.getElementById("userInfo").innerHTML =
 `
 <div>
