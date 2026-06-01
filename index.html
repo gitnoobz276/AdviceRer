@@ -99,135 +99,127 @@ footer {
 ```
 <div class="card">
 
-    <h1>AdviceRer</h1>
+    <div id="login-screen" class="container">
 
-    <p class="tagline">
-        Sign Up For Free!
-    </p>
+  <div class="card">
 
-    <br>
+```
+<h1>AdviceRer</h1>
 
-    <button id="googleBtn" style="
-        background:#a00000;
-        color:white;
-        border:none;
-        padding:12px 20px;
-        border-radius:10px;
-        cursor:pointer;
-        width:100%;
-        max-width:300px;
-    ">
-        Continue with Google
-    </button>
+<p class="tagline">
+  Sign Up For Free!
+</p>
 
-    <br><br>
+<br>
 
-    <p>or</p>
+<button id="googleBtn" style="
+  background:#a00000;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:10px;
+  cursor:pointer;
+  width:100%;
+  max-width:300px;
+">
+  Continue with Google
+</button>
 
-    <br>
+<br><br>
 
-    <input
-        type="email"
-        id="email"
-        placeholder="Email"
-        style="
-            width:100%;
-            max-width:300px;
-            padding:12px;
-            margin-bottom:10px;
-        "
-    >
+<p>or</p>
 
-    <br>
+<br>
 
-    <input
-        type="password"
-        id="password"
-        placeholder="Password"
-        style="
-            width:100%;
-            max-width:300px;
-            padding:12px;
-        "
-    >
+<input
+  type="email"
+  id="email"
+  placeholder="Email"
+  style="
+    width:100%;
+    max-width:300px;
+    padding:12px;
+    margin-bottom:10px;
+  "
+>
 
-    <br><br>
+<br>
 
-    <button id="signupBtn" style="
-        background:#a00000;
-        color:white;
-        border:none;
-        padding:12px 20px;
-        border-radius:10px;
-        cursor:pointer;
-        width:100%;
-        max-width:300px;
-    ">
-        Create Account
-    </button>
+<input
+  type="password"
+  id="password"
+  placeholder="Password"
+  style="
+    width:100%;
+    max-width:300px;
+    padding:12px;
+  "
+>
+
+<br><br>
+
+<button id="signupBtn" style="
+  background:#a00000;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:10px;
+  cursor:pointer;
+  width:100%;
+  max-width:300px;
+">
+  Create Account
+</button>
+```
+
+  </div>
 
 </div>
-```
 
 <div id="homepage" style="display:none;">
 
   <div style="display:flex; min-height:100vh;">
 
-    <!-- Sidebar -->
-    <div style="
-      width:250px;
-      background:#fff;
-      border-right:1px solid #ddd;
-      padding:20px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    ">
+```
+<div style="
+  width:250px;
+  background:#fff;
+  border-right:1px solid #ddd;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+">
 
-      <div>
-        <h2>AdviceRer</h2>
-        <br>
+  <div>
+    <h2>AdviceRer</h2>
+    <br>
 
-        <button id="settingsBtn" style="
-          width:100%;
-          padding:10px;
-          border:none;
-          border-radius:8px;
-          cursor:pointer;
-        ">
-          Settings
-        </button>
-      </div>
+    <button id="settingsBtn">
+      Settings
+    </button>
+  </div>
 
-      <div id="userInfo">
-        Signed in
-      </div>
-
-    </div>
-
-    <!-- Main Content -->
-    <div style="
-      flex:1;
-      padding:40px;
-    ">
-
-      <h1>AdviceRer</h1>
-
-      <p>
-        Welcome back!
-      </p>
-
-      <br>
-
-      <p>
-        Use the chat button in the corner to start talking.
-      </p>
-
-    </div>
-
+  <div id="userInfo">
+    Signed in
   </div>
 
 </div>
+
+<div style="flex:1; padding:40px;">
+
+  <h1>AdviceRer</h1>
+
+  <p>Welcome back!</p>
+
+  <br>
+
+  <p>Use the chat button in the corner to start talking.</p>
+
+</div>
+```
+
+  </div>
 
 </div>
 
@@ -267,7 +259,7 @@ document.getElementById("userInfo").innerHTML =
   <strong>${result.user.displayName}</strong><br>
   ${result.user.email}
 </div>
-`;a
+`;
   } catch (error) {
     alert(error.message);
   }
