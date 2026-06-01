@@ -94,34 +94,83 @@ footer {
 
 <body>
 
-<div class="container">
+<div id="login-screen" class="container">
 
-    <div class="card">
+```
+<div class="card">
 
-        <h1>AdviceRer</h1>
+    <h1>AdviceRer</h1>
 
-        <p class="tagline">
-            Small Advice, Big Change.
-        </p>
+    <p class="tagline">
+        Sign Up For Free!
+    </p>
 
-        <p class="description">
-            Welcome to <span class="highlight">AdviceRer</span>,
-            a supportive AI created to help children dealing with
-            bullying, friendship problems, and difficult situations.
-        </p>
+    <br>
 
-        <div class="note">
-            💬 Click the chat button in the bottom-right corner to start talking.
-        </div>
+    <button id="googleBtn" style="
+        background:#a00000;
+        color:white;
+        border:none;
+        padding:12px 20px;
+        border-radius:10px;
+        cursor:pointer;
+        width:100%;
+        max-width:300px;
+    ">
+        Continue with Google
+    </button>
 
-        <footer>
-            © 2026 AdviceRer
-        </footer>
+    <br><br>
 
-    </div>
+    <p>or</p>
+
+    <br>
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Email"
+        style="
+            width:100%;
+            max-width:300px;
+            padding:12px;
+            margin-bottom:10px;
+        "
+    >
+
+    <br>
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        style="
+            width:100%;
+            max-width:300px;
+            padding:12px;
+        "
+    >
+
+    <br><br>
+
+    <button id="signupBtn" style="
+        background:#a00000;
+        color:white;
+        border:none;
+        padding:12px 20px;
+        border-radius:10px;
+        cursor:pointer;
+        width:100%;
+        max-width:300px;
+    ">
+        Create Account
+    </button>
 
 </div>
+```
 
+</div>
+a
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
