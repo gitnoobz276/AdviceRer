@@ -169,6 +169,66 @@ footer {
 </div>
 ```
 
+<div id="homepage" style="display:none;">
+
+  <div style="display:flex; min-height:100vh;">
+
+    <!-- Sidebar -->
+    <div style="
+      width:250px;
+      background:#fff;
+      border-right:1px solid #ddd;
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    ">
+
+      <div>
+        <h2>AdviceRer</h2>
+        <br>
+
+        <button id="settingsBtn" style="
+          width:100%;
+          padding:10px;
+          border:none;
+          border-radius:8px;
+          cursor:pointer;
+        ">
+          Settings
+        </button>
+      </div>
+
+      <div id="userInfo">
+        Signed in
+      </div>
+
+    </div>
+
+    <!-- Main Content -->
+    <div style="
+      flex:1;
+      padding:40px;
+    ">
+
+      <h1>AdviceRer</h1>
+
+      <p>
+        Welcome back!
+      </p>
+
+      <br>
+
+      <p>
+        Use the chat button in the corner to start talking.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
 </div>
 
 <script type="module">
@@ -197,7 +257,17 @@ document.getElementById("googleBtn").addEventListener("click", async () => {
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);
 
-    alert("Welcome " + result.user.displayName);
+document.getElementById("login-screen").style.display = "none";
+
+document.getElementById("homepage").style.display = "block";
+
+document.getElementById("userInfo").innerHTML =
+`
+<div>
+  <strong>${result.user.displayName}</strong><br>
+  ${result.user.email}
+</div>
+`;a
   } catch (error) {
     alert(error.message);
   }
