@@ -137,8 +137,6 @@ font-size:20px;
 ">
 ☰
 </button>
-  
-</div>
 
 <!-- Settings Modal -->
 <div id="settingsModal" style="
@@ -177,6 +175,13 @@ z-index:10000;
       <input type="checkbox" id="imageToggle">
     </label>
 
+<br><br>
+
+<label>
+  🌙 Dark Mode
+  <input type="checkbox" id="darkToggle">
+</label>
+
     <br><br>
 
     <button id="closeSettings">
@@ -186,8 +191,6 @@ z-index:10000;
   </div>
 
 </div>
-
-<script type="module">
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
@@ -292,13 +295,6 @@ if(savedMic === "true"){
 if(savedImage === "true"){
   document.getElementById("imageToggle").checked = true;
 }
-
-<br><br>
-
-<label>
-  🌙 Dark Mode
-  <input type="checkbox" id="darkToggle">
-</label>
 
 // Save microphone setting
 document.getElementById("micToggle").addEventListener("change", () => {
