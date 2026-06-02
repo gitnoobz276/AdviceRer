@@ -12,8 +12,63 @@ body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#ffffff,#ffd
 .card{background:rgba(255,255,255,.95);padding:40px;border-radius:20px;text-align:center}
 input,button{padding:12px;margin:8px 0;width:100%;max-width:320px}
 #homepage{display:none;height:100vh}
-.sidebar{width:250px;background:#fff;border-right:1px solid #ddd;padding:20px;display:flex;flex-direction:column;justify-content:space-between}
-.main{flex:1;padding:40px}
+.sidebar{
+  width:260px;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(12px);
+  border-right:1px solid rgba(0,0,0,0.08);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.main{
+  flex:1;
+  padding:40px;
+}
+
+@media (max-width: 768px) {
+
+  #menuBtn {
+    display:block !important;
+  }
+
+  #sidebar {
+    position: fixed;
+    left: -260px;
+    top: 0;
+    height: 100%;
+    z-index: 9999;
+    transition: 0.3s;
+  }
+
+  #sidebar.open {
+    left: 0;
+  }
+
+}
+
+.dark-mode{
+  background:#1e1e1e !important;
+  color:white !important;
+}
+
+.dark-mode .card{
+  background:#2a2a2a !important;
+  color:white !important;
+}
+
+.dark-mode .sidebar{
+  background:#2a2a2a !important;
+  color:white !important;
+}
+
+.dark-mode button{
+  color:white;
+}
+
 </style>
 </head>
 <body>
@@ -36,12 +91,31 @@ input,button{padding:12px;margin:8px 0;width:100%;max-width:320px}
 
 <div id="homepage">
   <div style="display:flex;height:100vh">
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
       <div>
         <h2>AdviceRer</h2><br>
-        <button id="settingsBtn">Settings</button>
+        <button id="settingsBtn" style="
+width:100%;
+padding:12px;
+border:none;
+border-radius:12px;
+background:#ffe5e5;
+color:#a00000;
+font-weight:bold;
+cursor:pointer;
+transition:.2s;
+">
+⚙️ Settings
+</button>
       </div>
-      <div id="userInfo">Signed in</div>
+      <div id="userInfo" style="
+padding:12px;
+background:#fff3f3;
+border-radius:12px;
+font-size:14px;
+">
+Signed in
+</div>
     </div>
     <div class="main">
       <h1>AdviceRer</h1>
@@ -51,6 +125,69 @@ input,button{padding:12px;margin:8px 0;width:100%;max-width:320px}
     </div>
   </div>
 </div>
+
+<button id="menuBtn" style="
+display:none;
+padding:10px;
+border:none;
+border-radius:10px;
+margin-bottom:20px;
+cursor:pointer;
+font-size:20px;
+">
+☰
+</button>
+  
+</div>
+
+<!-- Settings Modal -->
+<div id="settingsModal" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+z-index:10000;
+">
+
+  <div style="
+  background:white;
+  width:90%;
+  max-width:400px;
+  margin:100px auto;
+  padding:25px;
+  border-radius:20px;
+  ">
+
+    <h2>⚙️ Settings</h2>
+
+    <br>
+
+    <label>
+      🎤 Microphone
+      <input type="checkbox" id="micToggle">
+    </label>
+
+    <br><br>
+
+    <label>
+      🖼️ Image Generation
+      <input type="checkbox" id="imageToggle">
+    </label>
+
+    <br><br>
+
+    <button id="closeSettings">
+      Close
+    </button>
+
+  </div>
+
+</div>
+
+<script type="module">
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
@@ -75,6 +212,25 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+function loadBotpress() {
+  if (window.botpressLoaded) return;
+
+  window.botpressLoaded = true;
+
+  const script1 = document.createElement("script");
+  script1.src = "https://cdn.botpress.cloud/webchat/v3.6/inject.js";
+
+  const script2 = document.createElement("script");
+  script2.src =
+    "https://files.bpcontent.cloud/2026/05/30/04/20260530045144-SCCAU2ZI.js";
+
+  document.body.appendChild(script1);
+
+  script1.onload = () => {
+    document.body.appendChild(script2);
+  };
+}
+
 function showHomepage(user){
   document.getElementById("login-screen").style.display="none";
   document.getElementById("homepage").style.display="block";
@@ -86,6 +242,8 @@ document.getElementById("googleBtn").addEventListener("click", async ()=>{
   const provider = new GoogleAuthProvider();
   const result = await signInWithPopup(auth, provider);
   showHomepage(result.user);
+
+loadBotpress();
 });
 
 document.getElementById("signupBtn").addEventListener("click", async ()=>{
@@ -106,10 +264,88 @@ onAuthStateChanged(auth, async (user)=>{
     }
   }
 });
-</script>
 
-<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2026/05/30/04/20260530045144-SCCAU2ZI.js" defer></script>
+document.getElementById("settingsBtn").addEventListener("click", () => {
+  document.getElementById("settingsModal").style.display = "block";
+});
+
+document.getElementById("closeSettings").addEventListener("click", () => {
+  document.getElementById("settingsModal").style.display = "none";
+});
+
+document.getElementById("menuBtn").addEventListener("click", () => {
+
+  document
+    .getElementById("sidebar")
+    .classList.toggle("open");
+
+});
+
+// Load saved settings
+const savedMic = localStorage.getItem("micEnabled");
+const savedImage = localStorage.getItem("imageEnabled");
+
+if(savedMic === "true"){
+  document.getElementById("micToggle").checked = true;
+}
+
+if(savedImage === "true"){
+  document.getElementById("imageToggle").checked = true;
+}
+
+<br><br>
+
+<label>
+  🌙 Dark Mode
+  <input type="checkbox" id="darkToggle">
+</label>
+
+// Save microphone setting
+document.getElementById("micToggle").addEventListener("change", () => {
+
+  localStorage.setItem(
+    "micEnabled",
+    document.getElementById("micToggle").checked
+  );
+
+});
+
+// Save image generation setting
+document.getElementById("imageToggle").addEventListener("change", () => {
+
+  localStorage.setItem(
+    "imageEnabled",
+    document.getElementById("imageToggle").checked
+  );
+
+});
+
+// Load saved dark mode
+const savedDark = localStorage.getItem("darkMode");
+
+if(savedDark === "true"){
+  document.body.classList.add("dark-mode");
+  document.getElementById("darkToggle").checked = true;
+}
+
+// Save dark mode
+document.getElementById("darkToggle").addEventListener("change", () => {
+
+  if(document.getElementById("darkToggle").checked){
+
+    document.body.classList.add("dark-mode");
+    localStorage.setItem("darkMode","true");
+
+  } else {
+
+    document.body.classList.remove("dark-mode");
+    localStorage.setItem("darkMode","false");
+
+  }
+
+});
+
+</script>
 
 </body>
 </html>
