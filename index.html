@@ -3,376 +3,263 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AdviceRer</title>
-<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="icon" href="favicon.png">
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#ffffff,#ffd6d6,#ffb8b8);min-height:100vh}
-.container{max-width:800px;margin:40px auto;padding:20px}
-.card{background:rgba(255,255,255,.95);padding:40px;border-radius:20px;text-align:center}
-input,button{padding:12px;margin:8px 0;width:100%;max-width:320px}
-#homepage{display:none;height:100vh}
-.sidebar{
-  width:260px;
-  background:rgba(255,255,255,0.95);
-  backdrop-filter:blur(12px);
-  border-right:1px solid rgba(0,0,0,0.08);
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
-.main{
-  flex:1;
-  padding:40px;
+body{
+background:linear-gradient(
+135deg,
+#ffffff,
+#ffd6d6,
+#ffb8b8
+);
+color:#333;
 }
 
-@media (max-width: 768px) {
-
-  #menuBtn {
-    display:block !important;
-  }
-
-  #sidebar {
-    position: fixed;
-    left: -260px;
-    top: 0;
-    height: 100%;
-    z-index: 9999;
-    transition: 0.3s;
-  }
-
-  #sidebar.open {
-    left: 0;
-  }
-
+section{
+padding:80px 20px;
 }
 
-.dark-mode{
-  background:#1e1e1e !important;
-  color:white !important;
+.container{
+max-width:1100px;
+margin:auto;
 }
 
-.dark-mode .card{
-  background:#2a2a2a !important;
-  color:white !important;
+.hero{
+text-align:center;
+padding:100px 20px;
 }
 
-.dark-mode .sidebar{
-  background:#2a2a2a !important;
-  color:white !important;
+.logo{
+width:120px;
+margin-bottom:20px;
 }
 
-.dark-mode button{
-  background:#505050;
-  color:white;
+.hero h1{
+font-size:4rem;
+color:#a00000;
+margin-bottom:15px;
 }
 
-.setting-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 0;
-  border-bottom:1px solid #eee;
-  font-size:16px;
+.hero p{
+font-size:1.4rem;
+color:#555;
 }
 
-.setting-row:last-child{
-  border-bottom:none;
+.card{
+background:rgba(255,255,255,0.85);
+backdrop-filter:blur(10px);
+border-radius:25px;
+padding:40px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-.primary-btn{
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:12px;
-  background:#a00000;
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-  transition:.2s;
+.section-title{
+text-align:center;
+font-size:2.4rem;
+color:#a00000;
+margin-bottom:40px;
 }
 
-.primary-btn:hover{
-  transform:translateY(-1px);
+.about-text{
+font-size:1.2rem;
+line-height:1.8;
+text-align:center;
 }
 
-#settingsModal > div{
-  background:white;
-  border-radius:20px;
-  padding:25px;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.feature{
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.feature h3{
+color:#a00000;
+margin-bottom:15px;
+}
+
+.review{
+max-width:700px;
+margin:auto;
+text-align:center;
+}
+
+.review-box{
+background:white;
+padding:35px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.stars{
+font-size:1.8rem;
+margin-bottom:15px;
+}
+
+footer{
+text-align:center;
+padding:30px;
+color:#666;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:2.8rem;
+}
+
+.hero p{
+font-size:1.1rem;
+}
+
 }
 
 </style>
 </head>
 <body>
 
-<div id="login-screen" class="container">
-  <div class="card">
-    <h1>AdviceRer</h1>
-    <p>Sign Up For Free!</p><br>
+<!-- HERO -->
 
-    <button id="googleBtn">Continue with Google</button>
+<section class="hero">
 
-    <p>or</p>
+<img src="logo.png" class="logo">
 
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
+<h1>AdviceRer</h1>
 
-    <button id="signupBtn">Create Account</button>
-  </div>
+<p>
+Small Advice, Big Change.
+</p>
+
+</section>
+
+<!-- ABOUT -->
+
+<section>
+
+<div class="container">
+
+<div class="card">
+
+<h2 class="section-title">
+What is AdviceRer?
+</h2>
+
+<p class="about-text">
+
+AdviceRer is an AI assistant designed to help children and teenagers with bullying,
+friendship problems, school challenges, and everyday situations.
+
+You can chat anytime and receive supportive advice in a safe environment.
+
+</p>
+
 </div>
 
-<div id="homepage">
-  <div style="display:flex;height:100vh">
-    <div class="sidebar" id="sidebar">
-      <div>
-        <h2>AdviceRer</h2><br>
-        <button id="settingsBtn" style="
-width:100%;
-padding:12px;
-border:none;
-border-radius:12px;
-background:#ffe5e5;
-color:#a00000;
-font-weight:bold;
-cursor:pointer;
-transition:.2s;
-">
-⚙️ Settings
-</button>
-      </div>
-      <div id="userInfo" style="
-padding:12px;
-background:#fff3f3;
-border-radius:12px;
-font-size:14px;
-">
-Signed in
-</div>
-    </div>
-    <div class="main">
-      <h1>AdviceRer</h1>
-      <p>Welcome back!</p>
-      <br>
-      <p>Use the chat button in the corner to start talking.</p>
-    </div>
-  </div>
 </div>
 
-<button id="menuBtn" style="
-display:none;
-padding:10px;
-border:none;
-border-radius:10px;
-margin-bottom:20px;
-cursor:pointer;
-font-size:20px;
-">
-☰
-</button>
+</section>
 
-<!-- Settings Modal -->
-<div id="settingsModal" style="
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.4);
-z-index:10000;
-">
+<!-- FEATURES -->
 
-  <div style="
-  background:white;
-  width:90%;
-  max-width:400px;
-  margin:100px auto;
-  padding:25px;
-  border-radius:20px;
-  ">
+<section>
 
-<h2 style="margin-bottom:20px;">⚙️ Settings</h2>
+<div class="container">
 
-<div class="setting-row">
-  <span>🎤 Microphone Access</span>
-  <input type="checkbox" id="micToggle">
+<h2 class="section-title">
+Why Use AdviceRer?
+</h2>
+
+<div class="features">
+
+<div class="feature">
+<h3>🛡️ Anti-Bullying Support</h3>
+<p>Helpful guidance for dealing with bullying situations.</p>
 </div>
 
-<div class="setting-row">
-  <span>🖼️ Image Generation</span>
-  <input type="checkbox" id="imageToggle">
+<div class="feature">
+<h3>🤝 Friendship Advice</h3>
+<p>Get support with friendships and social situations.</p>
 </div>
 
-<div class="setting-row">
-  <span>🌙 Dark Mode</span>
-  <input type="checkbox" id="darkToggle">
+<div class="feature">
+<h3>⚡ Instant AI Help</h3>
+<p>Talk with the AI assistant anytime.</p>
 </div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- REVIEW -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+What Users Say
+</h2>
+
+<div class="review">
+
+<div class="review-box">
+
+<div class="stars">
+⭐⭐⭐⭐⭐
+</div>
+
+<p>
+
+"AdviceRer helped me feel more confident when dealing with a difficult situation at school."
+
+</p>
 
 <br>
 
-<button id="closeSettings" class="primary-btn">
-  Close
-</button>
-
-  </div>
+<strong>
+— Happy User
+</strong>
 
 </div>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+</div>
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBe5cznf4e-AMKRX2k7qJpA8ru1S7jPmOk",
-  authDomain: "advicerer.firebaseapp.com",
-  projectId: "advicerer",
-  storageBucket: "advicerer.firebasestorage.app",
-  messagingSenderId: "927744916100",
-  appId: "1:927744916100:web:ee8412ffe0a8491276e0d1"
-};
+</div>
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+</section>
 
-function loadBotpress() {
-  if (window.botpressLoaded) return;
+<footer>
 
-  window.botpressLoaded = true;
+© 2026 AdviceRer
 
-  const script1 = document.createElement("script");
-  script1.src = "https://cdn.botpress.cloud/webchat/v3.6/inject.js";
+</footer>
 
-  const script2 = document.createElement("script");
-  script2.src =
-    "https://files.bpcontent.cloud/2026/05/30/04/20260530045144-SCCAU2ZI.js";
+<!-- BOTPRESS -->
 
-  document.body.appendChild(script1);
+<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
 
-  script1.onload = () => {
-    document.body.appendChild(script2);
-  };
-}
-
-function showHomepage(user){
-  document.getElementById("login-screen").style.display="none";
-  document.getElementById("homepage").style.display="block";
-  document.getElementById("userInfo").textContent =
-    user.displayName || user.email || "User";
-}
-
-document.getElementById("googleBtn").addEventListener("click", async ()=>{
-  const provider = new GoogleAuthProvider();
-  const result = await signInWithPopup(auth, provider);
-  showHomepage(result.user);
-
-loadBotpress();
-});
-
-document.getElementById("signupBtn").addEventListener("click", async ()=>{
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  const cred = await createUserWithEmailAndPassword(auth,email,password);
-  await sendEmailVerification(cred.user);
-
-  alert("Verification email sent. Verify your email, then sign in again.");
-});
-
-onAuthStateChanged(auth, async (user)=>{
-  if(user){
-    await user.reload();
-    if(user.providerData.some(p=>p.providerId==="google.com") || user.emailVerified){
-      showHomepage(user);
-    }
-  }
-});
-
-document.getElementById("settingsBtn").addEventListener("click", () => {
-  document.getElementById("settingsModal").style.display = "block";
-});
-
-document.getElementById("closeSettings").addEventListener("click", () => {
-  document.getElementById("settingsModal").style.display = "none";
-});
-
-document.getElementById("menuBtn").addEventListener("click", () => {
-
-  document
-    .getElementById("sidebar")
-    .classList.toggle("open");
-
-});
-
-// Load saved settings
-const savedMic = localStorage.getItem("micEnabled");
-const savedImage = localStorage.getItem("imageEnabled");
-
-if(savedMic === "true"){
-  document.getElementById("micToggle").checked = true;
-}
-
-if(savedImage === "true"){
-  document.getElementById("imageToggle").checked = true;
-}
-
-// Save microphone setting
-document.getElementById("micToggle").addEventListener("change", () => {
-
-  localStorage.setItem(
-    "micEnabled",
-    document.getElementById("micToggle").checked
-  );
-
-});
-
-// Save image generation setting
-document.getElementById("imageToggle").addEventListener("change", () => {
-
-  localStorage.setItem(
-    "imageEnabled",
-    document.getElementById("imageToggle").checked
-  );
-
-});
-
-// Load saved dark mode
-const savedDark = localStorage.getItem("darkMode");
-
-if(savedDark === "true"){
-  document.body.classList.add("dark-mode");
-  document.getElementById("darkToggle").checked = true;
-}
-
-// Save dark mode
-document.getElementById("darkToggle").addEventListener("change", () => {
-
-  if(document.getElementById("darkToggle").checked){
-
-    document.body.classList.add("dark-mode");
-    localStorage.setItem("darkMode","true");
-
-  } else {
-
-    document.body.classList.remove("dark-mode");
-    localStorage.setItem("darkMode","false");
-
-  }
-
-});
-
-</script>
+<script src="https://files.bpcontent.cloud/2026/05/30/04/20260530045144-SCCAU2ZI.js" defer></script>
 
 </body>
 </html>
